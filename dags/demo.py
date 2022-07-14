@@ -22,7 +22,7 @@ with DAG(dag_id="Demo",schedule_interval="0 9 * * *", start_date=datetime(2022, 
         print("file loaded successfully")
         return 0
     
-    #fetching data for verification
+    #fetching data from azure blob storage account to upload it later u=in mongodb demodb database
     def fetch_data(ti):
         test=WasbHook(wasb_conn_id="demo")
         x=test.get_blobs_list(container_name="demo")
