@@ -1,0 +1,35 @@
+[2022-07-13 11:29:04,464] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-07-13T11:28:08.648637+00:00 [queued]>
+[2022-07-13 11:29:04,491] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-07-13T11:28:08.648637+00:00 [queued]>
+[2022-07-13 11:29:04,492] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 11:29:04,493] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-13 11:29:04,494] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 11:29:04,943] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-07-13 11:28:08.648637+00:00
+[2022-07-13 11:29:04,951] {standard_task_runner.py:52} INFO - Started process 1114 to run task
+[2022-07-13 11:29:04,960] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-07-13T11:28:08.648637+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpovcs6eox', '--error-file', '/tmp/tmp9wc45vhh']
+[2022-07-13 11:29:04,961] {standard_task_runner.py:80} INFO - Job 30: Subtask data_uploading
+[2022-07-13 11:29:05,355] {task_command.py:370} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-07-13T11:28:08.648637+00:00 [running]> on host 939e047cba2c
+[2022-07-13 11:29:05,913] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-13T11:28:08.648637+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-13T11:28:08.648637+00:00
+[2022-07-13 11:29:05,949] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-13 11:29:05,957] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 23, in upload_data
+    test.load_file(file_path="E:\Demo\files\example_2.json",container_name="demo",blob_name="example")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 253, in load_file
+    with open(file_path, 'rb') as data:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\Demo\x0ciles\\example_2.json'
+[2022-07-13 11:29:06,063] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading, execution_date=20220713T112808, start_date=20220713T112904, end_date=20220713T112906
+[2022-07-13 11:29:06,375] {standard_task_runner.py:97} ERROR - Failed to execute job 30 for task data_uploading ([Errno 2] No such file or directory: 'E:\\Demo\x0ciles\\example_2.json'; 1114)
+[2022-07-13 11:29:06,422] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-13 11:29:06,749] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

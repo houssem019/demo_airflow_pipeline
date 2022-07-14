@@ -1,0 +1,48 @@
+[2022-07-14 18:14:57,785] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-07-14T18:14:41.639879+00:00 [queued]>
+[2022-07-14 18:14:57,815] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-07-14T18:14:41.639879+00:00 [queued]>
+[2022-07-14 18:14:57,815] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-14 18:14:57,816] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-14 18:14:57,817] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-14 18:14:58,551] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): container_creation> on 2022-07-14 18:14:41.639879+00:00
+[2022-07-14 18:14:58,567] {standard_task_runner.py:52} INFO - Started process 301 to run task
+[2022-07-14 18:14:58,580] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'container_creation', 'manual__2022-07-14T18:14:41.639879+00:00', '--job-id', '60', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp1znwrvuz', '--error-file', '/tmp/tmp5upuzo5y']
+[2022-07-14 18:14:58,581] {standard_task_runner.py:80} INFO - Job 60: Subtask container_creation
+[2022-07-14 18:14:58,952] {task_command.py:370} INFO - Running <TaskInstance: Demo.container_creation manual__2022-07-14T18:14:41.639879+00:00 [running]> on host 824fcd1f751d
+[2022-07-14 18:15:05,041] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=container_creation
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-14T18:14:41.639879+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-14T18:14:41.639879+00:00
+[2022-07-14 18:15:05,098] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-14 18:15:05,108] {logging_mixin.py:115} INFO - <***.providers.microsoft.azure.hooks.wasb.WasbHook object at 0x7f5cc6b65850>
+[2022-07-14 18:15:05,109] {logging_mixin.py:115} INFO - connection made successfully
+[2022-07-14 18:15:05,117] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/demo?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.3)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'e2af71fa-03a0-11ed-af07-0242ac120009'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-14 18:15:16,719] {_universal.py:504} INFO - Response status: 409
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-error-code': 'REDACTED'
+    'x-ms-request-id': '476bee04-05d7-4d60-978b-b1e62c7121c1'
+    'content-type': 'application/xml'
+    'Date': 'Thu, 14 Jul 2022 18:15:15 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-07-14 18:15:16,797] {wasb.py:371} INFO - Attempted to create container 'demo' but it already exists. If it is expected that this container will always exist, consider setting create_container to False.
+[2022-07-14 18:15:16,798] {logging_mixin.py:115} INFO - container created successfully
+[2022-07-14 18:15:16,799] {python.py:173} INFO - Done. Returned value was: 0
+[2022-07-14 18:15:17,257] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=container_creation, execution_date=20220714T181441, start_date=20220714T181457, end_date=20220714T181517
+[2022-07-14 18:15:18,215] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-07-14 18:15:18,525] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

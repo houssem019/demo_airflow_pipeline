@@ -1,0 +1,115 @@
+[2022-07-13 00:26:47,528] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.demo manual__2022-07-13T00:26:36.752481+00:00 [queued]>
+[2022-07-13 00:26:47,556] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.demo manual__2022-07-13T00:26:36.752481+00:00 [queued]>
+[2022-07-13 00:26:47,557] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 00:26:47,557] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-13 00:26:47,558] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 00:26:48,126] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): demo> on 2022-07-13 00:26:36.752481+00:00
+[2022-07-13 00:26:48,137] {standard_task_runner.py:52} INFO - Started process 258 to run task
+[2022-07-13 00:26:48,149] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'demo', 'manual__2022-07-13T00:26:36.752481+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp0jgph1fs', '--error-file', '/tmp/tmpbyl9nrgf']
+[2022-07-13 00:26:48,150] {standard_task_runner.py:80} INFO - Job 19: Subtask demo
+[2022-07-13 00:26:48,419] {task_command.py:370} INFO - Running <TaskInstance: Demo.demo manual__2022-07-13T00:26:36.752481+00:00 [running]> on host 939e047cba2c
+[2022-07-13 00:26:48,905] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=demo
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-13T00:26:36.752481+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-13T00:26:36.752481+00:00
+[2022-07-13 00:26:48,948] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-13 00:26:48,955] {logging_mixin.py:115} INFO - <***.providers.microsoft.azure.hooks.wasb.WasbHook object at 0x7f9cc91c4c50>
+[2022-07-13 00:26:48,956] {logging_mixin.py:115} INFO - connection made successfully
+[2022-07-13 00:26:48,966] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/demo?restype=REDACTED&comp=REDACTED&delimiter=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.3)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': '7bfce6a4-0242-11ed-9455-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-13 00:27:29,951] {_universal.py:504} INFO - Response status: 404
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-error-code': 'REDACTED'
+    'x-ms-request-id': 'b497e336-4560-4ce9-959c-dec5ea68e81d'
+    'content-type': 'application/xml'
+    'Date': 'Wed, 13 Jul 2022 00:27:29 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-07-13 00:27:30,574] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 77, in _get_next_cb
+    use_location=self.location_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 1576, in list_blob_hierarchy_segment
+    map_error(status_code=response.status_code, response=response, error_map=error_map)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 107, in map_error
+    raise error
+azure.core.exceptions.ResourceNotFoundError: Operation returned an invalid status 'The specified container does not exist.'
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>ContainerNotFound</Code>
+  <Message>The specified container does not exist.
+RequestId:b497e336-4560-4ce9-959c-dec5ea68e81d
+Time:2022-07-13T00:27:28.484Z</Message>
+</Error>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 11, in demo
+    x=test.get_blobs_list(container_name="demo")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 231, in get_blobs_list
+    for blob in blobs:
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/paging.py", line 129, in __next__
+    return next(self._page_iterator)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/paging.py", line 76, in __next__
+    self._response = self._get_next(self.continuation_token)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 79, in _get_next_cb
+    process_storage_error(error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/response_handlers.py", line 150, in process_storage_error
+    error.raise_with_traceback()
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 249, in raise_with_traceback
+    raise super(AzureError, self).with_traceback(self.exc_traceback)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 77, in _get_next_cb
+    use_location=self.location_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 1576, in list_blob_hierarchy_segment
+    map_error(status_code=response.status_code, response=response, error_map=error_map)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 107, in map_error
+    raise error
+azure.core.exceptions.ResourceNotFoundError: The specified container does not exist.
+RequestId:b497e336-4560-4ce9-959c-dec5ea68e81d
+Time:2022-07-13T00:27:28.484Z
+ErrorCode:ContainerNotFound
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>ContainerNotFound</Code>
+  <Message>The specified container does not exist.
+RequestId:b497e336-4560-4ce9-959c-dec5ea68e81d
+Time:2022-07-13T00:27:28.484Z</Message>
+</Error>
+[2022-07-13 00:27:30,687] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Demo, task_id=demo, execution_date=20220713T002636, start_date=20220713T002647, end_date=20220713T002730
+[2022-07-13 00:27:30,889] {standard_task_runner.py:97} ERROR - Failed to execute job 19 for task demo (The specified container does not exist.
+RequestId:b497e336-4560-4ce9-959c-dec5ea68e81d
+Time:2022-07-13T00:27:28.484Z
+ErrorCode:ContainerNotFound
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>ContainerNotFound</Code>
+  <Message>The specified container does not exist.
+RequestId:b497e336-4560-4ce9-959c-dec5ea68e81d
+Time:2022-07-13T00:27:28.484Z</Message>
+</Error>; 258)
+[2022-07-13 00:27:30,946] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-13 00:27:31,125] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

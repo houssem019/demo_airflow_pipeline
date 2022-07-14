@@ -1,0 +1,119 @@
+[2022-07-13 12:39:16,520] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-07-13T12:39:09.060055+00:00 [queued]>
+[2022-07-13 12:39:16,550] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-07-13T12:39:09.060055+00:00 [queued]>
+[2022-07-13 12:39:16,551] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 12:39:16,552] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-13 12:39:16,553] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 12:39:17,211] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-07-13 12:39:09.060055+00:00
+[2022-07-13 12:39:17,221] {standard_task_runner.py:52} INFO - Started process 1242 to run task
+[2022-07-13 12:39:17,233] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-07-13T12:39:09.060055+00:00', '--job-id', '42', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpouter77a', '--error-file', '/tmp/tmpv3slj47g']
+[2022-07-13 12:39:17,235] {standard_task_runner.py:80} INFO - Job 42: Subtask data_uploading
+[2022-07-13 12:39:17,669] {task_command.py:370} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-07-13T12:39:09.060055+00:00 [running]> on host dbd17cae98ec
+[2022-07-13 12:39:18,250] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-13T12:39:09.060055+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-13T12:39:09.060055+00:00
+[2022-07-13 12:39:18,283] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-13 12:39:18,295] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/demo/example'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '947'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.3)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cfd4c100-02a8-11ed-a97b-0242ac120009'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-07-13 12:39:19,299] {_universal.py:504} INFO - Response status: 409
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-error-code': 'REDACTED'
+    'x-ms-request-id': 'd6c96ff0-cf94-4607-8606-e3782ef7beea'
+    'content-type': 'application/xml'
+    'Date': 'Wed, 13 Jul 2022 12:39:19 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-07-13 12:39:19,309] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_upload_helpers.py", line 105, in upload_block_blob
+    **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_block_blob_operations.py", line 228, in upload
+    map_error(status_code=response.status_code, response=response, error_map=error_map)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 107, in map_error
+    raise error
+azure.core.exceptions.ResourceExistsError: Operation returned an invalid status 'The specified blob already exists.'
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>BlobAlreadyExists</Code>
+  <Message>The specified blob already exists.
+RequestId:d6c96ff0-cf94-4607-8606-e3782ef7beea
+Time:2022-07-13T12:39:19.091Z</Message>
+</Error>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 23, in upload_data
+    test.load_file(file_path="/opt/airflow/files/example_2.json",container_name="demo",blob_name="example")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 259, in load_file
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 339, in upload
+    return blob_client.upload_blob(data, blob_type, length=length, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/tracing/decorator.py", line 73, in wrapper_use_tracer
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_blob_client.py", line 693, in upload_blob
+    return upload_block_blob(**options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_upload_helpers.py", line 157, in upload_block_blob
+    process_storage_error(error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/response_handlers.py", line 150, in process_storage_error
+    error.raise_with_traceback()
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 249, in raise_with_traceback
+    raise super(AzureError, self).with_traceback(self.exc_traceback)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_upload_helpers.py", line 105, in upload_block_blob
+    **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_block_blob_operations.py", line 228, in upload
+    map_error(status_code=response.status_code, response=response, error_map=error_map)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 107, in map_error
+    raise error
+azure.core.exceptions.ResourceExistsError: The specified blob already exists.
+RequestId:d6c96ff0-cf94-4607-8606-e3782ef7beea
+Time:2022-07-13T12:39:19.091Z
+ErrorCode:BlobAlreadyExists
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>BlobAlreadyExists</Code>
+  <Message>The specified blob already exists.
+RequestId:d6c96ff0-cf94-4607-8606-e3782ef7beea
+Time:2022-07-13T12:39:19.091Z</Message>
+</Error>
+[2022-07-13 12:39:19,559] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading, execution_date=20220713T123909, start_date=20220713T123916, end_date=20220713T123919
+[2022-07-13 12:39:20,197] {standard_task_runner.py:97} ERROR - Failed to execute job 42 for task data_uploading (The specified blob already exists.
+RequestId:d6c96ff0-cf94-4607-8606-e3782ef7beea
+Time:2022-07-13T12:39:19.091Z
+ErrorCode:BlobAlreadyExists
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>BlobAlreadyExists</Code>
+  <Message>The specified blob already exists.
+RequestId:d6c96ff0-cf94-4607-8606-e3782ef7beea
+Time:2022-07-13T12:39:19.091Z</Message>
+</Error>; 1242)
+[2022-07-13 12:39:20,248] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-13 12:39:21,174] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

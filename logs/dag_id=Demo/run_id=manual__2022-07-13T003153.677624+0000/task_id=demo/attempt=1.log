@@ -1,0 +1,111 @@
+[2022-07-13 00:32:00,473] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.demo manual__2022-07-13T00:31:53.677624+00:00 [queued]>
+[2022-07-13 00:32:00,508] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: Demo.demo manual__2022-07-13T00:31:53.677624+00:00 [queued]>
+[2022-07-13 00:32:00,509] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 00:32:00,511] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-13 00:32:00,512] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-13 00:32:01,310] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): demo> on 2022-07-13 00:31:53.677624+00:00
+[2022-07-13 00:32:01,319] {standard_task_runner.py:52} INFO - Started process 386 to run task
+[2022-07-13 00:32:01,329] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'demo', 'manual__2022-07-13T00:31:53.677624+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp3lsefijt', '--error-file', '/tmp/tmpoorj8htj']
+[2022-07-13 00:32:01,331] {standard_task_runner.py:80} INFO - Job 20: Subtask demo
+[2022-07-13 00:32:01,836] {task_command.py:370} INFO - Running <TaskInstance: Demo.demo manual__2022-07-13T00:31:53.677624+00:00 [running]> on host 939e047cba2c
+[2022-07-13 00:32:03,187] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=demo
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-13T00:31:53.677624+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-13T00:31:53.677624+00:00
+[2022-07-13 00:32:03,223] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-13 00:32:03,229] {logging_mixin.py:115} INFO - <***.providers.microsoft.azure.hooks.wasb.WasbHook object at 0x7f9cc91efc10>
+[2022-07-13 00:32:03,231] {logging_mixin.py:115} INFO - connection made successfully
+[2022-07-13 00:32:03,239] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/Blob%20Containers/demo?restype=REDACTED&comp=REDACTED&delimiter=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.3)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': '374f3664-0243-11ed-bff6-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-13 00:32:03,294] {_universal.py:504} INFO - Response status: 400
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-error-code': 'REDACTED'
+    'x-ms-request-id': '9336cada-66bf-47cd-bd9e-70d5ce357711'
+    'content-type': 'application/xml'
+    'Date': 'Wed, 13 Jul 2022 00:32:03 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-07-13 00:32:03,429] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 77, in _get_next_cb
+    use_location=self.location_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 1578, in list_blob_hierarchy_segment
+    raise HttpResponseError(response=response, model=error)
+azure.core.exceptions.HttpResponseError: Operation returned an invalid status 'The specifed resource name contains invalid characters.'
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidResourceName</Code>
+  <Message>The specifed resource name contains invalid characters.
+RequestId:9336cada-66bf-47cd-bd9e-70d5ce357711
+Time:2022-07-13T00:32:03.286Z</Message>
+</Error>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 11, in demo
+    x=test.get_blobs_list(container_name="Blob Containers/demo")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 231, in get_blobs_list
+    for blob in blobs:
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/paging.py", line 129, in __next__
+    return next(self._page_iterator)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/paging.py", line 76, in __next__
+    self._response = self._get_next(self.continuation_token)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 79, in _get_next_cb
+    process_storage_error(error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/response_handlers.py", line 150, in process_storage_error
+    error.raise_with_traceback()
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 249, in raise_with_traceback
+    raise super(AzureError, self).with_traceback(self.exc_traceback)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 77, in _get_next_cb
+    use_location=self.location_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 1578, in list_blob_hierarchy_segment
+    raise HttpResponseError(response=response, model=error)
+azure.core.exceptions.HttpResponseError: The specifed resource name contains invalid characters.
+RequestId:9336cada-66bf-47cd-bd9e-70d5ce357711
+Time:2022-07-13T00:32:03.286Z
+ErrorCode:InvalidResourceName
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidResourceName</Code>
+  <Message>The specifed resource name contains invalid characters.
+RequestId:9336cada-66bf-47cd-bd9e-70d5ce357711
+Time:2022-07-13T00:32:03.286Z</Message>
+</Error>
+[2022-07-13 00:32:03,463] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Demo, task_id=demo, execution_date=20220713T003153, start_date=20220713T003200, end_date=20220713T003203
+[2022-07-13 00:32:03,738] {standard_task_runner.py:97} ERROR - Failed to execute job 20 for task demo (The specifed resource name contains invalid characters.
+RequestId:9336cada-66bf-47cd-bd9e-70d5ce357711
+Time:2022-07-13T00:32:03.286Z
+ErrorCode:InvalidResourceName
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidResourceName</Code>
+  <Message>The specifed resource name contains invalid characters.
+RequestId:9336cada-66bf-47cd-bd9e-70d5ce357711
+Time:2022-07-13T00:32:03.286Z</Message>
+</Error>; 386)
+[2022-07-13 00:32:03,754] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-13 00:32:04,103] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
