@@ -1,0 +1,181 @@
+[2022-07-27 16:33:21,551] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-07-27T16:32:52.259694+00:00 [queued]>
+[2022-07-27 16:33:21,565] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-07-27T16:32:52.259694+00:00 [queued]>
+[2022-07-27 16:33:21,566] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-27 16:33:21,567] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-27 16:33:21,567] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-27 16:33:21,648] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-07-27 16:32:52.259694+00:00
+[2022-07-27 16:33:21,654] {standard_task_runner.py:52} INFO - Started process 724 to run task
+[2022-07-27 16:33:21,659] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-07-27T16:32:52.259694+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp_lgr70yl', '--error-file', '/tmp/tmp8ozkepfu']
+[2022-07-27 16:33:21,660] {standard_task_runner.py:80} INFO - Job 12: Subtask data_uploading
+[2022-07-27 16:33:21,786] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-07-27T16:32:52.259694+00:00 [running]> on host 3aa4098107fa
+[2022-07-27 16:33:22,110] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-27T16:32:52.259694+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-27T16:32:52.259694+00:00
+[2022-07-27 16:33:22,127] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-27 16:33:22,190] {_universal.py:473} INFO - Request URL: 'https://devstoreaccount1.blob.core.windows.net/demo/example'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '984'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'd46daf34-0dc9-11ed-ab3d-0242ac120004'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-07-27 16:33:23,618] {_universal.py:504} INFO - Response status: 403
+Response headers:
+    'Content-Length': '772'
+    'Content-Type': 'application/xml'
+    'Server': 'Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': 'a76ae0f5-501e-0116-4ed6-a1b11d000000'
+    'x-ms-error-code': 'REDACTED'
+    'Date': 'Wed, 27 Jul 2022 16:33:23 GMT'
+[2022-07-27 16:33:24,886] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_upload_helpers.py", line 105, in upload_block_blob
+    **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_block_blob_operations.py", line 230, in upload
+    raise HttpResponseError(response=response, model=error)
+azure.core.exceptions.HttpResponseError: Operation returned an invalid status 'Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.'
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:a76ae0f5-501e-0116-4ed6-a1b11d000000
+Time:2022-07-27T16:33:23.8949950Z</Message><AuthenticationErrorDetail>The MAC signature found in the HTTP request '2+IhQNVd8Vy4Bd+XacUrrPH2co6yBBn8v3IX073RARA=' is not the same as any computed signature. Server used following string to sign: 'PUT
+
+
+984
+
+application/octet-stream
+
+
+
+*
+
+
+x-ms-blob-type:BlockBlob
+x-ms-client-request-id:d46daf34-0dc9-11ed-ab3d-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:33:22 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo/example'.</AuthenticationErrorDetail></Error>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 25, in upload_data
+    test.load_file(file_path="/opt/airflow/files/example_2.json",container_name="demo",blob_name="example")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 261, in load_file
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 341, in upload
+    return blob_client.upload_blob(data, blob_type, length=length, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/tracing/decorator.py", line 78, in wrapper_use_tracer
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_blob_client.py", line 693, in upload_blob
+    return upload_block_blob(**options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_upload_helpers.py", line 157, in upload_block_blob
+    process_storage_error(error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/response_handlers.py", line 150, in process_storage_error
+    error.raise_with_traceback()
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 249, in raise_with_traceback
+    raise super(AzureError, self).with_traceback(self.exc_traceback)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_upload_helpers.py", line 105, in upload_block_blob
+    **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_block_blob_operations.py", line 230, in upload
+    raise HttpResponseError(response=response, model=error)
+azure.core.exceptions.ClientAuthenticationError: Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:a76ae0f5-501e-0116-4ed6-a1b11d000000
+Time:2022-07-27T16:33:23.8949950Z
+ErrorCode:AuthenticationFailed
+Error:None
+AuthenticationErrorDetail:The MAC signature found in the HTTP request '2+IhQNVd8Vy4Bd+XacUrrPH2co6yBBn8v3IX073RARA=' is not the same as any computed signature. Server used following string to sign: 'PUT
+
+
+984
+
+application/octet-stream
+
+
+
+*
+
+
+x-ms-blob-type:BlockBlob
+x-ms-client-request-id:d46daf34-0dc9-11ed-ab3d-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:33:22 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo/example'.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:a76ae0f5-501e-0116-4ed6-a1b11d000000
+Time:2022-07-27T16:33:23.8949950Z</Message><AuthenticationErrorDetail>The MAC signature found in the HTTP request '2+IhQNVd8Vy4Bd+XacUrrPH2co6yBBn8v3IX073RARA=' is not the same as any computed signature. Server used following string to sign: 'PUT
+
+
+984
+
+application/octet-stream
+
+
+
+*
+
+
+x-ms-blob-type:BlockBlob
+x-ms-client-request-id:d46daf34-0dc9-11ed-ab3d-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:33:22 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo/example'.</AuthenticationErrorDetail></Error>
+[2022-07-27 16:33:24,924] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading, execution_date=20220727T163252, start_date=20220727T163321, end_date=20220727T163324
+[2022-07-27 16:33:26,390] {standard_task_runner.py:97} ERROR - Failed to execute job 12 for task data_uploading (Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:a76ae0f5-501e-0116-4ed6-a1b11d000000
+Time:2022-07-27T16:33:23.8949950Z
+ErrorCode:AuthenticationFailed
+Error:None
+AuthenticationErrorDetail:The MAC signature found in the HTTP request '2+IhQNVd8Vy4Bd+XacUrrPH2co6yBBn8v3IX073RARA=' is not the same as any computed signature. Server used following string to sign: 'PUT
+
+
+984
+
+application/octet-stream
+
+
+
+*
+
+
+x-ms-blob-type:BlockBlob
+x-ms-client-request-id:d46daf34-0dc9-11ed-ab3d-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:33:22 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo/example'.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:a76ae0f5-501e-0116-4ed6-a1b11d000000
+Time:2022-07-27T16:33:23.8949950Z</Message><AuthenticationErrorDetail>The MAC signature found in the HTTP request '2+IhQNVd8Vy4Bd+XacUrrPH2co6yBBn8v3IX073RARA=' is not the same as any computed signature. Server used following string to sign: 'PUT
+
+
+984
+
+application/octet-stream
+
+
+
+*
+
+
+x-ms-blob-type:BlockBlob
+x-ms-client-request-id:d46daf34-0dc9-11ed-ab3d-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:33:22 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo/example'.</AuthenticationErrorDetail></Error>; 724)
+[2022-07-27 16:33:26,432] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-27 16:33:27,286] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

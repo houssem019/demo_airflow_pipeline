@@ -1,0 +1,47 @@
+[2022-07-27 14:33:16,547] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-07-27T14:32:20.774651+00:00 [queued]>
+[2022-07-27 14:33:16,573] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-07-27T14:32:20.774651+00:00 [queued]>
+[2022-07-27 14:33:16,574] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-27 14:33:16,575] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-27 14:33:16,575] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-27 14:33:16,654] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): container_creation> on 2022-07-27 14:32:20.774651+00:00
+[2022-07-27 14:33:16,664] {standard_task_runner.py:52} INFO - Started process 1025 to run task
+[2022-07-27 14:33:16,743] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'container_creation', 'manual__2022-07-27T14:32:20.774651+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpqz3y3fzz', '--error-file', '/tmp/tmpgi8ge4d3']
+[2022-07-27 14:33:16,750] {standard_task_runner.py:80} INFO - Job 6: Subtask container_creation
+[2022-07-27 14:33:17,183] {task_command.py:371} INFO - Running <TaskInstance: Demo.container_creation manual__2022-07-27T14:32:20.774651+00:00 [running]> on host fafad4d69e23
+[2022-07-27 14:33:18,119] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=container_creation
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-27T14:32:20.774651+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-27T14:32:20.774651+00:00
+[2022-07-27 14:33:18,135] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-27 14:33:18,139] {logging_mixin.py:115} INFO - <***.providers.microsoft.azure.hooks.wasb.WasbHook object at 0x7f53bcee3590>
+[2022-07-27 14:33:18,139] {logging_mixin.py:115} INFO - connection made successfully
+[2022-07-27 14:33:18,171] {_universal.py:476} INFO - Request URL: 'https://devstoreaccount1.blob.core.windows.net/demo?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': '0e7b387e-0db9-11ed-ad79-0242ac120008'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-27 14:33:29,848] {_universal.py:504} INFO - Response status: 403
+Response headers:
+    'Content-Length': '729'
+    'Content-Type': 'application/xml'
+    'Server': 'Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '9d89f1d0-901e-0166-49c5-a1c2d9000000'
+    'x-ms-error-code': 'REDACTED'
+    'Date': 'Wed, 27 Jul 2022 14:33:29 GMT'
+[2022-07-27 14:33:34,758] {wasb.py:383} INFO - Received an HTTP response error while attempting to creating container 'demo': <RequestsTransportResponse: 403 Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature., Content-Type: application/xml>
+If the error is related to missing permissions to create containers, please consider setting create_container to False or supplying connection credentials with the appropriate permission for connection ID 'demo'.
+[2022-07-27 14:33:34,845] {logging_mixin.py:115} INFO - container created successfully
+[2022-07-27 14:33:34,911] {python.py:173} INFO - Done. Returned value was: 0
+[2022-07-27 14:33:43,006] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=container_creation, execution_date=20220727T143220, start_date=20220727T143316, end_date=20220727T143343
+[2022-07-27 14:33:47,327] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-07-27 14:33:50,882] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

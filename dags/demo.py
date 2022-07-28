@@ -1,6 +1,7 @@
 from airflow import DAG
 from datetime import datetime
 import json
+from airflow.providers.sftp.hooks.sftp import SFTPHook
 from airflow.providers.microsoft.azure.hooks.wasb import WasbHook
 from airflow.providers.mongo.hooks.mongo import MongoHook
 from airflow.operators.python import PythonOperator
@@ -8,11 +9,14 @@ from airflow.operators.python import PythonOperator
 with DAG(dag_id="Demo",schedule_interval="0 9 * * *", start_date=datetime(2022, 3, 5),catchup=False,  tags=["demo"]) as dag:
     #creating a container named demo where i m gonna upload the data
     def create_container():
-        test=WasbHook(wasb_conn_id="demo")
+        # test=WasbHook(wasb_conn_id="demo")
+        # print(test)
+        # print("connection made successfully")
+        # test.create_container(container_name="demo")
+        # print("container created successfully")
+        test=SFTPHook(ssh_conn_id="sftp_demo")
+        test.list_directory()
         print(test)
-        print("connection made successfully")
-        test.create_container(container_name="demo")
-        print("container created successfully")
         return 0
     
     #uploading a json file to the created container
@@ -63,4 +67,5 @@ with DAG(dag_id="Demo",schedule_interval="0 9 * * *", start_date=datetime(2022, 
         python_callable=upload_data_mongodb,
     )
 
-    create_container_task >> upload_data_task >> fetch_data_task >> upload_data_mongodb_task
+    create_container_task
+    # create_container_task >> upload_data_task >> fetch_data_task >> upload_data_mongodb_task

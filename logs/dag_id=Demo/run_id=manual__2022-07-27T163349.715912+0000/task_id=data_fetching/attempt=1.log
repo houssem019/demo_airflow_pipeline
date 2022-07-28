@@ -1,0 +1,185 @@
+[2022-07-27 16:34:02,081] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_fetching manual__2022-07-27T16:33:49.715912+00:00 [queued]>
+[2022-07-27 16:34:02,102] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_fetching manual__2022-07-27T16:33:49.715912+00:00 [queued]>
+[2022-07-27 16:34:02,102] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-27 16:34:02,102] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-27 16:34:02,103] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-27 16:34:02,184] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_fetching> on 2022-07-27 16:33:49.715912+00:00
+[2022-07-27 16:34:02,194] {standard_task_runner.py:52} INFO - Started process 743 to run task
+[2022-07-27 16:34:02,203] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_fetching', 'manual__2022-07-27T16:33:49.715912+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp8tq2th8n', '--error-file', '/tmp/tmp4fypjk9o']
+[2022-07-27 16:34:02,204] {standard_task_runner.py:80} INFO - Job 17: Subtask data_fetching
+[2022-07-27 16:34:02,722] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_fetching manual__2022-07-27T16:33:49.715912+00:00 [running]> on host 3aa4098107fa
+[2022-07-27 16:34:03,230] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_fetching
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-27T16:33:49.715912+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-27T16:33:49.715912+00:00
+[2022-07-27 16:34:03,247] {base.py:68} INFO - Using connection ID 'demo' for task execution.
+[2022-07-27 16:34:03,255] {_universal.py:476} INFO - Request URL: 'https://devstoreaccount1.blob.core.windows.net/demo?restype=REDACTED&comp=REDACTED&delimiter=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'ece786a2-0dc9-11ed-9c87-0242ac120004'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-27 16:34:03,939] {_universal.py:504} INFO - Response status: 403
+Response headers:
+    'Content-Length': '751'
+    'Content-Type': 'application/xml'
+    'Server': 'Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '355c49d2-401e-016f-71d6-a1d857000000'
+    'x-ms-error-code': 'REDACTED'
+    'Date': 'Wed, 27 Jul 2022 16:34:03 GMT'
+[2022-07-27 16:34:03,943] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 77, in _get_next_cb
+    use_location=self.location_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 1578, in list_blob_hierarchy_segment
+    raise HttpResponseError(response=response, model=error)
+azure.core.exceptions.HttpResponseError: Operation returned an invalid status 'Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.'
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:355c49d2-401e-016f-71d6-a1d857000000
+Time:2022-07-27T16:34:04.2273118Z</Message><AuthenticationErrorDetail>The MAC signature found in the HTTP request '9owl7Mun1jDw1X9axrri3jHzWTvkIi5G7lf/RzEM+YE=' is not the same as any computed signature. Server used following string to sign: 'GET
+
+
+
+
+
+
+
+
+
+
+
+x-ms-client-request-id:ece786a2-0dc9-11ed-9c87-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:34:03 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo
+comp:list
+delimiter:/
+restype:container'.</AuthenticationErrorDetail></Error>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 32, in fetch_data
+    x=test.get_blobs_list(container_name="demo")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 233, in get_blobs_list
+    for blob in blobs:
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/paging.py", line 128, in __next__
+    return next(self._page_iterator)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/paging.py", line 76, in __next__
+    self._response = self._get_next(self.continuation_token)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 79, in _get_next_cb
+    process_storage_error(error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/response_handlers.py", line 150, in process_storage_error
+    error.raise_with_traceback()
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/exceptions.py", line 249, in raise_with_traceback
+    raise super(AzureError, self).with_traceback(self.exc_traceback)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_list_blobs_helper.py", line 77, in _get_next_cb
+    use_location=self.location_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 1578, in list_blob_hierarchy_segment
+    raise HttpResponseError(response=response, model=error)
+azure.core.exceptions.ClientAuthenticationError: Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:355c49d2-401e-016f-71d6-a1d857000000
+Time:2022-07-27T16:34:04.2273118Z
+ErrorCode:AuthenticationFailed
+Error:None
+AuthenticationErrorDetail:The MAC signature found in the HTTP request '9owl7Mun1jDw1X9axrri3jHzWTvkIi5G7lf/RzEM+YE=' is not the same as any computed signature. Server used following string to sign: 'GET
+
+
+
+
+
+
+
+
+
+
+
+x-ms-client-request-id:ece786a2-0dc9-11ed-9c87-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:34:03 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo
+comp:list
+delimiter:/
+restype:container'.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:355c49d2-401e-016f-71d6-a1d857000000
+Time:2022-07-27T16:34:04.2273118Z</Message><AuthenticationErrorDetail>The MAC signature found in the HTTP request '9owl7Mun1jDw1X9axrri3jHzWTvkIi5G7lf/RzEM+YE=' is not the same as any computed signature. Server used following string to sign: 'GET
+
+
+
+
+
+
+
+
+
+
+
+x-ms-client-request-id:ece786a2-0dc9-11ed-9c87-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:34:03 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo
+comp:list
+delimiter:/
+restype:container'.</AuthenticationErrorDetail></Error>
+[2022-07-27 16:34:03,963] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_fetching, execution_date=20220727T163349, start_date=20220727T163402, end_date=20220727T163403
+[2022-07-27 16:34:04,180] {standard_task_runner.py:97} ERROR - Failed to execute job 17 for task data_fetching (Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:355c49d2-401e-016f-71d6-a1d857000000
+Time:2022-07-27T16:34:04.2273118Z
+ErrorCode:AuthenticationFailed
+Error:None
+AuthenticationErrorDetail:The MAC signature found in the HTTP request '9owl7Mun1jDw1X9axrri3jHzWTvkIi5G7lf/RzEM+YE=' is not the same as any computed signature. Server used following string to sign: 'GET
+
+
+
+
+
+
+
+
+
+
+
+x-ms-client-request-id:ece786a2-0dc9-11ed-9c87-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:34:03 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo
+comp:list
+delimiter:/
+restype:container'.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:355c49d2-401e-016f-71d6-a1d857000000
+Time:2022-07-27T16:34:04.2273118Z</Message><AuthenticationErrorDetail>The MAC signature found in the HTTP request '9owl7Mun1jDw1X9axrri3jHzWTvkIi5G7lf/RzEM+YE=' is not the same as any computed signature. Server used following string to sign: 'GET
+
+
+
+
+
+
+
+
+
+
+
+x-ms-client-request-id:ece786a2-0dc9-11ed-9c87-0242ac120004
+x-ms-date:Wed, 27 Jul 2022 16:34:03 GMT
+x-ms-version:2020-06-12
+/devstoreaccount1/demo
+comp:list
+delimiter:/
+restype:container'.</AuthenticationErrorDetail></Error>; 743)
+[2022-07-27 16:34:04,219] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-27 16:34:04,527] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
