@@ -1,0 +1,83 @@
+[2022-07-28 15:16:46,417] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-07-28T15:16:38.918482+00:00 [queued]>
+[2022-07-28 15:16:46,430] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-07-28T15:16:38.918482+00:00 [queued]>
+[2022-07-28 15:16:46,431] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 15:16:46,431] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-28 15:16:46,432] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 15:16:46,450] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading_mongodb> on 2022-07-28 15:16:38.918482+00:00
+[2022-07-28 15:16:46,456] {standard_task_runner.py:52} INFO - Started process 6473 to run task
+[2022-07-28 15:16:46,459] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading_mongodb', 'manual__2022-07-28T15:16:38.918482+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmps1pls323', '--error-file', '/tmp/tmp5rw5qmef']
+[2022-07-28 15:16:46,460] {standard_task_runner.py:80} INFO - Job 45: Subtask data_uploading_mongodb
+[2022-07-28 15:16:46,540] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading_mongodb manual__2022-07-28T15:16:38.918482+00:00 [running]> on host 949e67af4713
+[2022-07-28 15:16:46,629] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading_mongodb
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-28T15:16:38.918482+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-28T15:16:38.918482+00:00
+[2022-07-28 15:16:46,655] {base.py:68} INFO - Using connection ID 'mongodb_demo' for task execution.
+[2022-07-28 15:16:46,656] {logging_mixin.py:115} INFO - fdgsfgqgertrtzrththtey
+[2022-07-28 15:16:46,698] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 1394, in _get_socket
+    sock_info = self.sockets.popleft()
+IndexError: pop from an empty deque
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 43, in upload_data_mongodb
+    test.insert_one(mongo_collection="demo",doc=file)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/mongo/hooks/mongo.py", line 156, in insert_one
+    return collection.insert_one(doc, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/collection.py", line 708, in insert_one
+    session=session),
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/collection.py", line 622, in _insert
+    bypass_doc_val, session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/collection.py", line 610, in _insert_one
+    acknowledged, _insert_command, session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1552, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1438, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1462, in _retry_internal
+    with self._get_socket(server, session) as sock_info:
+  File "/usr/local/lib/python3.7/contextlib.py", line 112, in __enter__
+    return next(self.gen)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/mongo_client.py", line 1309, in _get_socket
+    self.__all_credentials, handler=err_handler) as sock_info:
+  File "/usr/local/lib/python3.7/contextlib.py", line 112, in __enter__
+    return next(self.gen)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 1331, in get_socket
+    sock_info = self._get_socket(all_credentials)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 1397, in _get_socket
+    sock_info = self.connect(all_credentials)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 1297, in connect
+    sock_info.check_auth(all_credentials)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 820, in check_auth
+    self.authenticate(credentials)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 837, in authenticate
+    auth.authenticate(credentials, self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/auth.py", line 672, in authenticate
+    auth_func(credentials, sock_info)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/auth.py", line 590, in _authenticate_default
+    return _authenticate_scram(credentials, sock_info, 'SCRAM-SHA-1')
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/auth.py", line 295, in _authenticate_scram
+    res = sock_info.command(source, cmd)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/pool.py", line 721, in command
+    exhaust_allowed=exhaust_allowed)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/network.py", line 163, in command
+    parse_write_concern_error=parse_write_concern_error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/helpers.py", line 167, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: Authentication failed., full error: {'ok': 0.0, 'errmsg': 'Authentication failed.', 'code': 18, 'codeName': 'AuthenticationFailed'}
+[2022-07-28 15:16:46,714] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading_mongodb, execution_date=20220728T151638, start_date=20220728T151646, end_date=20220728T151646
+[2022-07-28 15:16:46,730] {standard_task_runner.py:97} ERROR - Failed to execute job 45 for task data_uploading_mongodb (Authentication failed., full error: {'ok': 0.0, 'errmsg': 'Authentication failed.', 'code': 18, 'codeName': 'AuthenticationFailed'}; 6473)
+[2022-07-28 15:16:46,751] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-28 15:16:46,789] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

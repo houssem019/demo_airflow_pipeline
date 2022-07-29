@@ -1,0 +1,23 @@
+[2022-07-28 12:37:53,194] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-07-28T12:37:51.943194+00:00 [queued]>
+[2022-07-28 12:37:53,204] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-07-28T12:37:51.943194+00:00 [queued]>
+[2022-07-28 12:37:53,204] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 12:37:53,205] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-28 12:37:53,205] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 12:37:53,222] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): container_creation> on 2022-07-28 12:37:51.943194+00:00
+[2022-07-28 12:37:53,226] {standard_task_runner.py:52} INFO - Started process 1639 to run task
+[2022-07-28 12:37:53,229] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'container_creation', 'manual__2022-07-28T12:37:51.943194+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmph9iasty3', '--error-file', '/tmp/tmprtski47o']
+[2022-07-28 12:37:53,229] {standard_task_runner.py:80} INFO - Job 22: Subtask container_creation
+[2022-07-28 12:37:53,296] {task_command.py:371} INFO - Running <TaskInstance: Demo.container_creation manual__2022-07-28T12:37:51.943194+00:00 [running]> on host 949e67af4713
+[2022-07-28 12:37:53,376] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=container_creation
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-28T12:37:51.943194+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-28T12:37:51.943194+00:00
+[2022-07-28 12:37:53,377] {python.py:173} INFO - Done. Returned value was: 0
+[2022-07-28 12:37:53,407] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=container_creation, execution_date=20220728T123751, start_date=20220728T123753, end_date=20220728T123753
+[2022-07-28 12:37:53,441] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-07-28 12:37:53,490] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,6 +1,5 @@
-var db=connect("mongodb://root:password@192.168.1.4:27017/")
+var db=connect("mongodb://root:password@192.168.1.244:27017/")
 db=db.getSiblingDB('demo_db')
-
 db.createUser(
     {
         user:"root",

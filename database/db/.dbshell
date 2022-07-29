@@ -1,0 +1,14 @@
+use demo_db
+show dbs
+show dbs
+use demo_db
+shows dbs
+show dbs
+use demo_db
+use customer
+shows dbs
+show dbs
+use demo_db
+db.createCollection("demo")
+show dbs
+use demo_db

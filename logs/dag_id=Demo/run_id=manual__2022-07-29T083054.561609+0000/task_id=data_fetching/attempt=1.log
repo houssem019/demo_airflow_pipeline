@@ -1,0 +1,117 @@
+[2022-07-29 08:31:02,689] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_fetching manual__2022-07-29T08:30:54.561609+00:00 [queued]>
+[2022-07-29 08:31:02,720] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_fetching manual__2022-07-29T08:30:54.561609+00:00 [queued]>
+[2022-07-29 08:31:02,720] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-29 08:31:02,721] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-29 08:31:02,723] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-29 08:31:02,770] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_fetching> on 2022-07-29 08:30:54.561609+00:00
+[2022-07-29 08:31:02,778] {standard_task_runner.py:52} INFO - Started process 1604 to run task
+[2022-07-29 08:31:02,786] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_fetching', 'manual__2022-07-29T08:30:54.561609+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpefi9tcz8', '--error-file', '/tmp/tmpdlsiol63']
+[2022-07-29 08:31:02,787] {standard_task_runner.py:80} INFO - Job 54: Subtask data_fetching
+[2022-07-29 08:31:03,003] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_fetching manual__2022-07-29T08:30:54.561609+00:00 [running]> on host 949e67af4713
+[2022-07-29 08:31:03,170] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_fetching
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-29T08:30:54.561609+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-29T08:30:54.561609+00:00
+[2022-07-29 08:31:03,196] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-07-29 08:31:03,209] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/demo?restype=REDACTED&comp=REDACTED&delimiter=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'c846ccea-0f18-11ed-8f1b-0242ac120008'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-29 08:31:03,238] {_universal.py:504} INFO - Response status: 200
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'content-type': 'application/xml'
+    'x-ms-client-request-id': 'c846ccea-0f18-11ed-8f1b-0242ac120008'
+    'x-ms-request-id': '11f8c7f3-7e8d-468a-a388-d0331e8e0577'
+    'x-ms-version': 'REDACTED'
+    'date': 'Fri, 29 Jul 2022 08:31:03 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-07-29 08:31:03,248] {logging_mixin.py:115} INFO - ['example']
+[2022-07-29 08:31:03,252] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/demo/example'
+Request method: 'GET'
+Request headers:
+    'x-ms-range': 'REDACTED'
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'c84da3d0-0f18-11ed-8f1b-0242ac120008'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-07-29 08:31:03,268] {_universal.py:504} INFO - Response status: 206
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'last-modified': 'Thu, 28 Jul 2022 12:14:09 GMT'
+    'x-ms-creation-time': 'REDACTED'
+    'content-length': '984'
+    'content-type': 'application/octet-stream'
+    'content-range': 'REDACTED'
+    'etag': '"0x1EC715ABB3C8800"'
+    'content-md5': 'REDACTED'
+    'x-ms-blob-type': 'REDACTED'
+    'x-ms-lease-state': 'REDACTED'
+    'x-ms-lease-status': 'REDACTED'
+    'x-ms-client-request-id': 'c84da3d0-0f18-11ed-8f1b-0242ac120008'
+    'x-ms-request-id': '95ca68e1-59fb-4590-85a2-92489db7f12a'
+    'x-ms-version': 'REDACTED'
+    'accept-ranges': 'REDACTED'
+    'date': 'Fri, 29 Jul 2022 08:31:03 GMT'
+    'x-ms-server-encrypted': 'REDACTED'
+    'x-ms-blob-content-md5': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+[2022-07-29 08:31:03,374] {logging_mixin.py:115} INFO - {
+    "quiz": {
+        "sport": {
+            "q1": {
+                "question": "Which one is correct team name in NBA?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            }
+        },
+        "maths": {
+            "q1": {
+                "question": "5 + 7 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "12"
+            },
+            "q2": {
+                "question": "12 - 8 = ?",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "answer": "4"
+            }
+        }
+    }
+}
+[2022-07-29 08:31:03,375] {python.py:173} INFO - Done. Returned value was: 0
+[2022-07-29 08:31:03,434] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_fetching, execution_date=20220729T083054, start_date=20220729T083102, end_date=20220729T083103
+[2022-07-29 08:31:03,479] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-07-29 08:31:03,623] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,44 @@
+[2022-07-28 12:41:56,774] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-07-28T12:41:51.981311+00:00 [queued]>
+[2022-07-28 12:41:56,785] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-07-28T12:41:51.981311+00:00 [queued]>
+[2022-07-28 12:41:56,785] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 12:41:56,786] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-07-28 12:41:56,786] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 12:41:56,803] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading_mongodb> on 2022-07-28 12:41:51.981311+00:00
+[2022-07-28 12:41:56,832] {standard_task_runner.py:52} INFO - Started process 1857 to run task
+[2022-07-28 12:41:56,835] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading_mongodb', 'manual__2022-07-28T12:41:51.981311+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpil2vdp1s', '--error-file', '/tmp/tmpgxwt78qh']
+[2022-07-28 12:41:56,836] {standard_task_runner.py:80} INFO - Job 33: Subtask data_uploading_mongodb
+[2022-07-28 12:41:56,913] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading_mongodb manual__2022-07-28T12:41:51.981311+00:00 [running]> on host 949e67af4713
+[2022-07-28 12:41:56,996] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading_mongodb
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-28T12:41:51.981311+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-28T12:41:51.981311+00:00
+[2022-07-28 12:41:57,018] {base.py:68} INFO - Using connection ID 'mongodb_demo' for task execution.
+[2022-07-28 12:41:57,019] {logging_mixin.py:115} INFO - fdgsfgqgertrtzrththtey
+[2022-07-28 12:41:57,031] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 43, in upload_data_mongodb
+    test.insert_one(mongo_collection="demo",doc=file)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/mongo/hooks/mongo.py", line 154, in insert_one
+    collection = self.get_collection(mongo_collection, mongo_db=mongo_db)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/mongo/hooks/mongo.py", line 113, in get_collection
+    return mongo_conn.get_database(mongo_db).get_collection(mongo_collection)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/mongo_client.py", line 2203, in get_database
+    write_concern, read_concern)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/database.py", line 112, in __init__
+    _check_name(name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pymongo/database.py", line 48, in _check_name
+    raise InvalidName("database name cannot be the empty string")
+pymongo.errors.InvalidName: database name cannot be the empty string
+[2022-07-28 12:41:57,044] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading_mongodb, execution_date=20220728T124151, start_date=20220728T124156, end_date=20220728T124157
+[2022-07-28 12:41:57,059] {standard_task_runner.py:97} ERROR - Failed to execute job 33 for task data_uploading_mongodb (database name cannot be the empty string; 1857)
+[2022-07-28 12:41:57,087] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-28 12:41:57,126] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

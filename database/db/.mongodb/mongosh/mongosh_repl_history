@@ -1,0 +1,9 @@
+exit
+show dbs
+exit
+show dbs
+db.createCollection("demo")
+show dbs
+shw dbs
+use demo_db
+db.enableFreeMonitoring()
