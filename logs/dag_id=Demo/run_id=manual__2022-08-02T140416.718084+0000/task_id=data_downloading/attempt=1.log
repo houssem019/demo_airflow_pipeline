@@ -1,0 +1,30 @@
+[2022-08-02 14:04:20,981] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_downloading manual__2022-08-02T14:04:16.718084+00:00 [queued]>
+[2022-08-02 14:04:20,991] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_downloading manual__2022-08-02T14:04:16.718084+00:00 [queued]>
+[2022-08-02 14:04:20,992] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 14:04:20,992] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 14:04:20,993] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 14:04:21,012] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_downloading> on 2022-08-02 14:04:16.718084+00:00
+[2022-08-02 14:04:21,016] {standard_task_runner.py:52} INFO - Started process 13435 to run task
+[2022-08-02 14:04:21,019] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_downloading', 'manual__2022-08-02T14:04:16.718084+00:00', '--job-id', '313', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp2ayt_qdu', '--error-file', '/tmp/tmp09y29wjr']
+[2022-08-02 14:04:21,020] {standard_task_runner.py:80} INFO - Job 313: Subtask data_downloading
+[2022-08-02 14:04:21,099] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_downloading manual__2022-08-02T14:04:16.718084+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 14:04:21,188] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_downloading
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T14:04:16.718084+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T14:04:16.718084+00:00
+[2022-08-02 14:04:21,190] {logging_mixin.py:115} INFO - {'authority': 'https://login.microsoftonline.com/e0cf9a78-c695-404d-a358-126ac5781e34', 'client_id': 'bb84889f-9595-4aa8-8dc3-a3926f8ecf66', 'scope': ['https://graph.microsoft.com/.default'], 'secret': 'zYB8Q~0HoouTCRwlJR_hsRNQTHVOscyawKpWdbT~', 'endpoint': 'https://graph.microsoft.com/v1.0/users/houssem@yq1ws.onmicrosoft.com/', 'endpoint_waves': 'https://graph.microsoft.com/v1.0/users/houssem@yq1ws.onmicrosoft.com/drive/root/children/waves/children', 'endpoint_transcriptions': 'https://graph.microsoft.com/v1.0/users/houssem@yq1ws.onmicrosoft.com/drive/root/children/transcriptions/children'}
+[2022-08-02 14:04:21,190] {logging_mixin.py:115} INFO - {'file_1.wav': '01ZFL7NILY2XVSFGQVPFBJYF2277XVMUGP', 'file_2.wav': '01ZFL7NINKIE4JTJPAWVCJOG622NMMBUU7', 'file_3.wav': '01ZFL7NIPVR6BB3RPH6BBZXSGQLD2XEJ6G'}
+[2022-08-02 14:04:21,191] {logging_mixin.py:115} INFO - {'file_1.trs': '01ZFL7NINFQLVU2KEXKFAZZPAOXREMF7HK', 'file_2.trs': '01ZFL7NIIYD5H2D2O2JBHZSOWV6QPE6WBE', 'file_3.trs': '01ZFL7NIO3JCJ72GHZQFH2NUKBUNFLD4ID', 'file_4.trs': '01ZFL7NILTDXWJ7YZW2FEKEXXAYWU2A4PK'}
+[2022-08-02 14:04:30,144] {logging_mixin.py:115} INFO - ['file_1', 'file_2', 'file_3']
+[2022-08-02 14:04:31,898] {logging_mixin.py:115} INFO - file_1
+[2022-08-02 14:04:33,819] {logging_mixin.py:115} INFO - file_2
+[2022-08-02 14:04:35,665] {logging_mixin.py:115} INFO - file_3
+[2022-08-02 14:04:36,347] {python.py:173} INFO - Done. Returned value was: 0
+[2022-08-02 14:04:36,380] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_downloading, execution_date=20220802T140416, start_date=20220802T140420, end_date=20220802T140436
+[2022-08-02 14:04:36,421] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-02 14:04:36,464] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

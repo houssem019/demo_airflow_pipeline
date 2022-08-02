@@ -1,0 +1,75 @@
+[2022-08-02 13:04:42,496] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-02T13:04:23.156641+00:00 [queued]>
+[2022-08-02 13:04:42,507] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-02T13:04:23.156641+00:00 [queued]>
+[2022-08-02 13:04:42,508] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 13:04:42,509] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 13:04:42,509] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 13:04:42,527] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading_mongodb> on 2022-08-02 13:04:23.156641+00:00
+[2022-08-02 13:04:42,531] {standard_task_runner.py:52} INFO - Started process 10660 to run task
+[2022-08-02 13:04:42,535] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading_mongodb', 'manual__2022-08-02T13:04:23.156641+00:00', '--job-id', '302', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp9kvk4eea', '--error-file', '/tmp/tmp67dlma5k']
+[2022-08-02 13:04:42,536] {standard_task_runner.py:80} INFO - Job 302: Subtask data_uploading_mongodb
+[2022-08-02 13:04:42,608] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-02T13:04:23.156641+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 13:04:42,693] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading_mongodb
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T13:04:23.156641+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T13:04:23.156641+00:00
+[2022-08-02 13:04:42,703] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 13:04:42,707] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions/file_1'
+Request method: 'GET'
+Request headers:
+    'x-ms-range': 'REDACTED'
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'acb6c086-1263-11ed-9e2c-0242ac120007'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 13:04:42,718] {_universal.py:504} INFO - Response status: 206
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'last-modified': 'Tue, 02 Aug 2022 10:52:21 GMT'
+    'x-ms-creation-time': 'REDACTED'
+    'content-length': '121'
+    'content-type': 'application/octet-stream'
+    'content-range': 'REDACTED'
+    'etag': '"0x23F1848F6690920"'
+    'content-md5': 'REDACTED'
+    'x-ms-blob-type': 'REDACTED'
+    'x-ms-lease-state': 'REDACTED'
+    'x-ms-lease-status': 'REDACTED'
+    'x-ms-client-request-id': 'acb6c086-1263-11ed-9e2c-0242ac120007'
+    'x-ms-request-id': '1a7a455c-26fb-4102-8807-ea8d5de97b6e'
+    'x-ms-version': 'REDACTED'
+    'accept-ranges': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 13:04:42 GMT'
+    'x-ms-server-encrypted': 'REDACTED'
+    'x-ms-blob-content-md5': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+[2022-08-02 13:04:42,720] {logging_mixin.py:115} INFO - jdczdckjdcjecejcekcn
+zveajvvb
+v
+vovbvif
+ivbi
+vb
+vzdb
+caevafivea
+bfva
+bv
+abv
+ebavb
+ava
+va
+bvae
+va
+bvb
+fef
+[2022-08-02 13:04:42,720] {python.py:173} INFO - Done. Returned value was: 0
+[2022-08-02 13:04:42,752] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_uploading_mongodb, execution_date=20220802T130423, start_date=20220802T130442, end_date=20220802T130442
+[2022-08-02 13:04:42,787] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-02 13:04:42,825] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

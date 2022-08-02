@@ -86,6 +86,15 @@ services:
       interval: 5s
       retries: 5
     restart: always
+  
+  pgadmin4:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=houssemyousfi1999@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    ports:
+      - 15432:80
 
   redis:
     image: redis:latest
@@ -101,7 +110,7 @@ services:
   azurite:
     image: mcr.microsoft.com/azure-storage/azurite
     container_name: azurite
-  
+    command: azurite --blobHost azurite
   mongo:
     image: mongo
     container_name: mongo

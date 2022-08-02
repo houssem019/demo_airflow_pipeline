@@ -1,0 +1,57 @@
+[2022-08-02 07:49:44,883] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T07:49:36.467397+00:00 [queued]>
+[2022-08-02 07:49:44,895] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T07:49:36.467397+00:00 [queued]>
+[2022-08-02 07:49:44,895] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 07:49:44,896] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 07:49:44,897] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 07:49:44,914] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-08-02 07:49:36.467397+00:00
+[2022-08-02 07:49:44,919] {standard_task_runner.py:52} INFO - Started process 200 to run task
+[2022-08-02 07:49:44,923] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-08-02T07:49:36.467397+00:00', '--job-id', '137', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpav9ydhhu', '--error-file', '/tmp/tmpa10tdlum']
+[2022-08-02 07:49:44,924] {standard_task_runner.py:80} INFO - Job 137: Subtask data_uploading
+[2022-08-02 07:49:45,004] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-08-02T07:49:36.467397+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 07:49:45,118] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T07:49:36.467397+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T07:49:36.467397+00:00
+[2022-08-02 07:49:45,132] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 07:49:45,136] {logging_mixin.py:115} INFO - connection made successfully
+[2022-08-02 07:49:45,141] {_universal.py:476} INFO - Request URL: 'http://localhost:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'ace2be88-1237-11ed-84c9-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:50:01,119] {_universal.py:476} INFO - Request URL: 'http://localhost:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'b6690836-1237-11ed-84c9-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:50:27,560] {_universal.py:476} INFO - Request URL: 'http://localhost:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'c62b724a-1237-11ed-84c9-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:51:01,888] {local_task_job.py:221} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2022-08-02 07:51:01,897] {process_utils.py:129} INFO - Sending Signals.SIGTERM to group 200. PIDs of all processes in the group: [200]
+[2022-08-02 07:51:01,899] {process_utils.py:80} INFO - Sending the signal Signals.SIGTERM to group 200
+[2022-08-02 07:51:01,902] {taskinstance.py:1561} ERROR - Received SIGTERM. Terminating subprocesses.
+[2022-08-02 07:51:01,904] {wasb.py:386} INFO - Error while attempting to create container 'waves': Task received SIGTERM signal
+[2022-08-02 07:51:02,117] {process_utils.py:75} INFO - Process psutil.Process(pid=200, status='terminated', exitcode=0, started='07:49:44') (200) terminated with exit code 0

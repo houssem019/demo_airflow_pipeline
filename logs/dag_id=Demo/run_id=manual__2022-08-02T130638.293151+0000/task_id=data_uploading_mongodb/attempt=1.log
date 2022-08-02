@@ -1,0 +1,72 @@
+[2022-08-02 13:06:57,319] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-02T13:06:38.293151+00:00 [queued]>
+[2022-08-02 13:06:57,331] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-02T13:06:38.293151+00:00 [queued]>
+[2022-08-02 13:06:57,331] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 13:06:57,332] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 13:06:57,332] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 13:06:57,351] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading_mongodb> on 2022-08-02 13:06:38.293151+00:00
+[2022-08-02 13:06:57,356] {standard_task_runner.py:52} INFO - Started process 10769 to run task
+[2022-08-02 13:06:57,359] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading_mongodb', 'manual__2022-08-02T13:06:38.293151+00:00', '--job-id', '307', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmprnd5q54x', '--error-file', '/tmp/tmp7url75fq']
+[2022-08-02 13:06:57,360] {standard_task_runner.py:80} INFO - Job 307: Subtask data_uploading_mongodb
+[2022-08-02 13:06:57,437] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-02T13:06:38.293151+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 13:06:57,528] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading_mongodb
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T13:06:38.293151+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T13:06:38.293151+00:00
+[2022-08-02 13:06:57,538] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 13:06:57,542] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions/file_1'
+Request method: 'GET'
+Request headers:
+    'x-ms-range': 'REDACTED'
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'fd14e6de-1263-11ed-b716-0242ac120007'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 13:06:57,552] {_universal.py:504} INFO - Response status: 206
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'last-modified': 'Tue, 02 Aug 2022 10:52:21 GMT'
+    'x-ms-creation-time': 'REDACTED'
+    'content-length': '121'
+    'content-type': 'application/octet-stream'
+    'content-range': 'REDACTED'
+    'etag': '"0x23F1848F6690920"'
+    'content-md5': 'REDACTED'
+    'x-ms-blob-type': 'REDACTED'
+    'x-ms-lease-state': 'REDACTED'
+    'x-ms-lease-status': 'REDACTED'
+    'x-ms-client-request-id': 'fd14e6de-1263-11ed-b716-0242ac120007'
+    'x-ms-request-id': 'f6ff2c3f-515b-4179-afd8-96b0f6e5d200'
+    'x-ms-version': 'REDACTED'
+    'accept-ranges': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 13:06:57 GMT'
+    'x-ms-server-encrypted': 'REDACTED'
+    'x-ms-blob-content-md5': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+[2022-08-02 13:06:57,554] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 69, in upload_data_mongodb
+    file_json=json.loads(file)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/lib/python3.7/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2022-08-02 13:06:57,594] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading_mongodb, execution_date=20220802T130638, start_date=20220802T130657, end_date=20220802T130657
+[2022-08-02 13:06:57,610] {standard_task_runner.py:97} ERROR - Failed to execute job 307 for task data_uploading_mongodb (Expecting value: line 1 column 1 (char 0); 10769)
+[2022-08-02 13:06:57,651] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-08-02 13:06:57,689] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

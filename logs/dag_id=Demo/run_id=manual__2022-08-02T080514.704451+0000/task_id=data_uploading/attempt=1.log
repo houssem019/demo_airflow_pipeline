@@ -1,0 +1,239 @@
+[2022-08-02 08:05:22,757] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T08:05:14.704451+00:00 [queued]>
+[2022-08-02 08:05:22,772] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T08:05:14.704451+00:00 [queued]>
+[2022-08-02 08:05:22,772] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 08:05:22,773] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 08:05:22,774] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 08:05:22,795] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-08-02 08:05:14.704451+00:00
+[2022-08-02 08:05:22,801] {standard_task_runner.py:52} INFO - Started process 918 to run task
+[2022-08-02 08:05:22,804] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-08-02T08:05:14.704451+00:00', '--job-id', '153', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp__wb6ze6', '--error-file', '/tmp/tmptvxyiyr9']
+[2022-08-02 08:05:22,805] {standard_task_runner.py:80} INFO - Job 153: Subtask data_uploading
+[2022-08-02 08:05:22,908] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-08-02T08:05:14.704451+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 08:05:23,139] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T08:05:14.704451+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T08:05:14.704451+00:00
+[2022-08-02 08:05:23,168] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 08:05:23,172] {logging_mixin.py:115} INFO - connection made successfully
+[2022-08-02 08:05:23,176] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dbff96bc-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 08:05:23,203] {_universal.py:504} INFO - Response status: 409
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-error-code': 'REDACTED'
+    'x-ms-request-id': 'fcf2da93-b0e1-4aad-a794-d9234aa0e3fe'
+    'content-type': 'application/xml'
+    'Date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-08-02 08:05:23,208] {wasb.py:373} INFO - Attempted to create container 'waves' but it already exists. If it is expected that this container will always exist, consider setting create_container to False.
+[2022-08-02 08:05:23,217] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc056b32-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 08:05:23,231] {_universal.py:504} INFO - Response status: 409
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-error-code': 'REDACTED'
+    'x-ms-request-id': '11bae79d-8fed-43c0-b9ef-25ec428cc24d'
+    'content-type': 'application/xml'
+    'Date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-08-02 08:05:23,233] {wasb.py:373} INFO - Attempted to create container 'transcriptions' but it already exists. If it is expected that this container will always exist, consider setting create_container to False.
+[2022-08-02 08:05:23,233] {logging_mixin.py:115} INFO - containers created successfully
+[2022-08-02 08:05:23,236] {logging_mixin.py:115} INFO - ['file_1.wav', 'file_2.wav', 'file_3.wav']
+[2022-08-02 08:05:23,309] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/waves/file_1'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '5226766'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc140d36-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-08-02 08:05:23,402] {_universal.py:504} INFO - Response status: 201
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'etag': '"0x21B55DA3446DE00"'
+    'last-modified': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'content-md5': 'REDACTED'
+    'x-ms-client-request-id': 'dc140d36-1239-11ed-ae21-0242ac120006'
+    'x-ms-request-id': 'd177b714-e730-436a-b70d-8421581d024f'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 08:05:23,447] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/waves/file_2'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '2146166'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc292afe-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-08-02 08:05:23,493] {_universal.py:504} INFO - Response status: 201
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'etag': '"0x1F58B9ED98AD730"'
+    'last-modified': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'content-md5': 'REDACTED'
+    'x-ms-client-request-id': 'dc292afe-1239-11ed-ae21-0242ac120006'
+    'x-ms-request-id': '535fcf72-069b-4f8c-b08b-5403b2ee7ae0'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 08:05:23,521] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/waves/file_3'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '1073218'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc346b58-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-08-02 08:05:23,559] {_universal.py:504} INFO - Response status: 201
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'etag': '"0x1AB8A1FBEDB31B0"'
+    'last-modified': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'content-md5': 'REDACTED'
+    'x-ms-client-request-id': 'dc346b58-1239-11ed-ae21-0242ac120006'
+    'x-ms-request-id': '343b0977-9ddc-4ed8-81aa-92e080e5e04c'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 08:05:23,562] {logging_mixin.py:115} INFO - ['file_1.trs', 'file_2.trs', 'file_3.trs']
+[2022-08-02 08:05:23,575] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions/file_1'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '121'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc3cb092-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-08-02 08:05:23,594] {_universal.py:504} INFO - Response status: 201
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'etag': '"0x1EE727EB2269460"'
+    'last-modified': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'content-md5': 'REDACTED'
+    'x-ms-client-request-id': 'dc3cb092-1239-11ed-ae21-0242ac120006'
+    'x-ms-request-id': '7048bbf0-7b04-4ec9-b409-b5bac7be4db9'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 08:05:23,603] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions/file_2'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '121'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc40e25c-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-08-02 08:05:23,621] {_universal.py:504} INFO - Response status: 201
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'etag': '"0x1D78B186C9A8A80"'
+    'last-modified': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'content-md5': 'REDACTED'
+    'x-ms-client-request-id': 'dc40e25c-1239-11ed-ae21-0242ac120006'
+    'x-ms-request-id': '2aa72644-aba5-4a27-b78b-3eadd939d29f'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 08:05:23,628] {_universal.py:473} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions/file_3'
+Request method: 'PUT'
+Request headers:
+    'x-ms-blob-type': 'REDACTED'
+    'Content-Length': '121'
+    'If-None-Match': '*'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'dc44b40e-1239-11ed-ae21-0242ac120006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2022-08-02 08:05:23,647] {_universal.py:504} INFO - Response status: 201
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'etag': '"0x216712EC7EC67C0"'
+    'last-modified': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'content-md5': 'REDACTED'
+    'x-ms-client-request-id': 'dc44b40e-1239-11ed-ae21-0242ac120006'
+    'x-ms-request-id': '881549d9-f78c-45a6-a366-5873e062fba8'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 08:05:23 GMT'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 08:05:23,649] {logging_mixin.py:115} INFO - files loaded successfully
+[2022-08-02 08:05:23,650] {python.py:173} INFO - Done. Returned value was: 0
+[2022-08-02 08:05:23,698] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_uploading, execution_date=20220802T080514, start_date=20220802T080522, end_date=20220802T080523
+[2022-08-02 08:05:23,744] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-02 08:05:23,811] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

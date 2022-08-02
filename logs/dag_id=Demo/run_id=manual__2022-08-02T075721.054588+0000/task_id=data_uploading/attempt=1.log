@@ -1,0 +1,119 @@
+[2022-08-02 07:57:29,448] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T07:57:21.054588+00:00 [queued]>
+[2022-08-02 07:57:29,469] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T07:57:21.054588+00:00 [queued]>
+[2022-08-02 07:57:29,470] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 07:57:29,471] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 07:57:29,472] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 07:57:29,512] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-08-02 07:57:21.054588+00:00
+[2022-08-02 07:57:29,520] {standard_task_runner.py:52} INFO - Started process 555 to run task
+[2022-08-02 07:57:29,529] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-08-02T07:57:21.054588+00:00', '--job-id', '147', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpa1uv8u5r', '--error-file', '/tmp/tmpyckg2oua']
+[2022-08-02 07:57:29,530] {standard_task_runner.py:80} INFO - Job 147: Subtask data_uploading
+[2022-08-02 07:57:29,688] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-08-02T07:57:21.054588+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 07:57:29,908] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T07:57:21.054588+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T07:57:21.054588+00:00
+[2022-08-02 07:57:29,930] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 07:57:29,936] {logging_mixin.py:115} INFO - connection made successfully
+[2022-08-02 07:57:29,941] {_universal.py:476} INFO - Request URL: 'http://127.0.0.1:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'c1edaef4-1238-11ed-9590-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:57:46,958] {_universal.py:476} INFO - Request URL: 'http://127.0.0.1:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'cc1228f6-1238-11ed-9590-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:58:09,883] {_universal.py:476} INFO - Request URL: 'http://127.0.0.1:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'd9bc2b5a-1238-11ed-9590-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:58:51,606] {_universal.py:476} INFO - Request URL: 'http://127.0.0.1:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'PUT'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'f29ad806-1238-11ed-9590-0242ac120006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 07:58:51,610] {wasb.py:386} INFO - Error while attempting to create container 'waves': <urllib3.connection.HTTPConnection object at 0x7f097ff8f950>: Failed to establish a new connection: [Errno 111] Connection refused
+[2022-08-02 07:58:51,611] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 25, in upload_data
+    test.create_container(container_name="waves")
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/microsoft/azure/hooks/wasb.py", line 367, in create_container
+    container_client.create_container()
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/tracing/decorator.py", line 78, in wrapper_use_tracer
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_container_client.py", line 298, in create_container
+    **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_generated/operations/_container_operations.py", line 128, in create
+    pipeline_response = self._client._pipeline.run(request, stream=False, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 211, in run
+    return first_node.send(pipeline_request)  # type: ignore
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  [Previous line repeated 2 more times]
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/policies/_redirect.py", line 158, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/policies.py", line 515, in send
+    raise err
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/policies.py", line 489, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  [Previous line repeated 1 more time]
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/policies.py", line 290, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 71, in send
+    response = self.next.send(request)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/_base.py", line 103, in send
+    self._sender.send(request.http_request, **request.context.options),
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/storage/blob/_shared/base_client.py", line 333, in send
+    return self._transport.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/azure/core/pipeline/transport/_requests_basic.py", line 361, in send
+    raise error
+azure.core.exceptions.ServiceRequestError: <urllib3.connection.HTTPConnection object at 0x7f097ff8f950>: Failed to establish a new connection: [Errno 111] Connection refused
+[2022-08-02 07:58:51,628] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=data_uploading, execution_date=20220802T075721, start_date=20220802T075729, end_date=20220802T075851
+[2022-08-02 07:58:51,646] {standard_task_runner.py:97} ERROR - Failed to execute job 147 for task data_uploading (<urllib3.connection.HTTPConnection object at 0x7f097ff8f950>: Failed to establish a new connection: [Errno 111] Connection refused; 555)
+[2022-08-02 07:58:51,692] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-08-02 07:58:51,908] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

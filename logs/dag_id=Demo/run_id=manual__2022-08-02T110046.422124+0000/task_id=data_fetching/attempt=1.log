@@ -1,0 +1,46 @@
+[2022-08-02 11:00:58,169] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_fetching manual__2022-08-02T11:00:46.422124+00:00 [queued]>
+[2022-08-02 11:00:58,179] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_fetching manual__2022-08-02T11:00:46.422124+00:00 [queued]>
+[2022-08-02 11:00:58,180] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 11:00:58,180] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 11:00:58,181] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 11:00:58,200] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_fetching> on 2022-08-02 11:00:46.422124+00:00
+[2022-08-02 11:00:58,205] {standard_task_runner.py:52} INFO - Started process 6873 to run task
+[2022-08-02 11:00:58,208] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_fetching', 'manual__2022-08-02T11:00:46.422124+00:00', '--job-id', '290', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpw38fu5xc', '--error-file', '/tmp/tmpvg4ezltj']
+[2022-08-02 11:00:58,209] {standard_task_runner.py:80} INFO - Job 290: Subtask data_fetching
+[2022-08-02 11:00:58,281] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_fetching manual__2022-08-02T11:00:46.422124+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 11:00:58,372] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_fetching
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T11:00:46.422124+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T11:00:46.422124+00:00
+[2022-08-02 11:00:58,383] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 11:00:58,388] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions?restype=REDACTED&comp=REDACTED&delimiter=REDACTED'
+Request method: 'GET'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': '63796bbe-1252-11ed-81ac-0242ac120007'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 11:00:58,398] {_universal.py:504} INFO - Response status: 200
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'content-type': 'application/xml'
+    'x-ms-client-request-id': '63796bbe-1252-11ed-81ac-0242ac120007'
+    'x-ms-request-id': '4fc7370f-ccc4-4ead-b552-d077693eb95c'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 11:00:58 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Transfer-Encoding': 'chunked'
+[2022-08-02 11:00:58,402] {logging_mixin.py:115} INFO - ['file_1', 'file_2', 'file_3']
+[2022-08-02 11:00:58,419] {python.py:173} INFO - Done. Returned value was: 0
+[2022-08-02 11:00:58,447] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_fetching, execution_date=20220802T110046, start_date=20220802T110058, end_date=20220802T110058
+[2022-08-02 11:00:58,501] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-02 11:00:58,555] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

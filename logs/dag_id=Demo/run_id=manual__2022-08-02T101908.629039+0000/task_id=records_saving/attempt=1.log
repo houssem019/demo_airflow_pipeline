@@ -1,0 +1,40 @@
+[2022-08-02 10:19:25,484] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.records_saving manual__2022-08-02T10:19:08.629039+00:00 [queued]>
+[2022-08-02 10:19:25,495] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.records_saving manual__2022-08-02T10:19:08.629039+00:00 [queued]>
+[2022-08-02 10:19:25,496] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 10:19:25,497] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 10:19:25,497] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 10:19:25,516] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): records_saving> on 2022-08-02 10:19:08.629039+00:00
+[2022-08-02 10:19:25,521] {standard_task_runner.py:52} INFO - Started process 4828 to run task
+[2022-08-02 10:19:25,524] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'records_saving', 'manual__2022-08-02T10:19:08.629039+00:00', '--job-id', '223', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp7neyoi6c', '--error-file', '/tmp/tmpx0w43v3v']
+[2022-08-02 10:19:25,525] {standard_task_runner.py:80} INFO - Job 223: Subtask records_saving
+[2022-08-02 10:19:25,601] {task_command.py:371} INFO - Running <TaskInstance: Demo.records_saving manual__2022-08-02T10:19:08.629039+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 10:19:25,688] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=records_saving
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T10:19:08.629039+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T10:19:08.629039+00:00
+[2022-08-02 10:19:25,701] {base.py:68} INFO - Using connection ID 'postgres_demo' for task execution.
+[2022-08-02 10:19:25,705] {dbapi.py:231} INFO - Running statement: CREATE TABLE IF NOT EXISTS public."Files"
+                            (
+                                id integer NOT NULL,
+                                name character(80)[] COLLATE pg_catalog."default" NOT NULL,
+                                size bigint,
+                                CONSTRAINT "Files_pkey" PRIMARY KEY (id)
+                            ), parameters: None
+[2022-08-02 10:19:25,706] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 63, in save_records
+    VALUES ({params.id},{params.name},{params.size});"""
+AttributeError: 'dict' object has no attribute 'id'
+[2022-08-02 10:19:25,720] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=records_saving, execution_date=20220802T101908, start_date=20220802T101925, end_date=20220802T101925
+[2022-08-02 10:19:25,738] {standard_task_runner.py:97} ERROR - Failed to execute job 223 for task records_saving ('dict' object has no attribute 'id'; 4828)
+[2022-08-02 10:19:25,776] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-08-02 10:19:25,827] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

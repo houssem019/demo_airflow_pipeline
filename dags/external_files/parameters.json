@@ -1,0 +1,9 @@
+{
+  "authority": "https://login.microsoftonline.com/e0cf9a78-c695-404d-a358-126ac5781e34",
+  "client_id": "bb84889f-9595-4aa8-8dc3-a3926f8ecf66",
+  "scope": [ "https://graph.microsoft.com/.default" ],
+  "secret": "zYB8Q~0HoouTCRwlJR_hsRNQTHVOscyawKpWdbT~",
+  "endpoint":"https://graph.microsoft.com/v1.0/users/houssem@yq1ws.onmicrosoft.com/",
+  "endpoint_waves": "https://graph.microsoft.com/v1.0/users/houssem@yq1ws.onmicrosoft.com/drive/root/children/waves/children",
+  "endpoint_transcriptions":"https://graph.microsoft.com/v1.0/users/houssem@yq1ws.onmicrosoft.com/drive/root/children/transcriptions/children"
+}

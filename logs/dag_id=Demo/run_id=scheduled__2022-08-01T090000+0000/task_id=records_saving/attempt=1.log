@@ -1,0 +1,32 @@
+[2022-08-02 09:00:19,127] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.records_saving scheduled__2022-08-01T09:00:00+00:00 [queued]>
+[2022-08-02 09:00:19,145] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.records_saving scheduled__2022-08-01T09:00:00+00:00 [queued]>
+[2022-08-02 09:00:19,146] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 09:00:19,146] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 09:00:19,147] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 09:00:19,174] {taskinstance.py:1397} INFO - Executing <Task(PostgresOperator): records_saving> on 2022-08-01 09:00:00+00:00
+[2022-08-02 09:00:19,180] {standard_task_runner.py:52} INFO - Started process 1605 to run task
+[2022-08-02 09:00:19,184] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'records_saving', 'scheduled__2022-08-01T09:00:00+00:00', '--job-id', '166', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp5pto7uen', '--error-file', '/tmp/tmpyi8ufrzh']
+[2022-08-02 09:00:19,184] {standard_task_runner.py:80} INFO - Job 166: Subtask records_saving
+[2022-08-02 09:00:19,315] {task_command.py:371} INFO - Running <TaskInstance: Demo.records_saving scheduled__2022-08-01T09:00:00+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 09:00:19,543] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=records_saving
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-01T09:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-08-01T09:00:00+00:00
+[2022-08-02 09:00:19,563] {base.py:68} INFO - Using connection ID 'postgres_demo' for task execution.
+[2022-08-02 09:00:19,577] {dbapi.py:231} INFO - Running statement: CREATE TABLE IF NOT EXISTS public."Files"
+(
+    id integer NOT NULL,
+    name character(80)[] COLLATE pg_catalog."default" NOT NULL,
+    size bigint,
+    CONSTRAINT "Files_pkey" PRIMARY KEY (id)
+), parameters: None
+[2022-08-02 09:00:19,579] {postgres.py:94} INFO - NOTICE:  relation "Files" already exists, skipping
+
+[2022-08-02 09:00:19,603] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=records_saving, execution_date=20220801T090000, start_date=20220802T090019, end_date=20220802T090019
+[2022-08-02 09:00:19,677] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-02 09:00:19,802] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

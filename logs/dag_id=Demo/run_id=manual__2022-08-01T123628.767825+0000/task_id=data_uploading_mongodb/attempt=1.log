@@ -1,0 +1,23 @@
+[2022-08-01 12:36:59,043] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-01T12:36:28.767825+00:00 [queued]>
+[2022-08-01 12:36:59,055] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-01T12:36:28.767825+00:00 [queued]>
+[2022-08-01 12:36:59,056] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-01 12:36:59,057] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-01 12:36:59,057] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-01 12:36:59,075] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading_mongodb> on 2022-08-01 12:36:28.767825+00:00
+[2022-08-01 12:36:59,081] {standard_task_runner.py:52} INFO - Started process 4320 to run task
+[2022-08-01 12:36:59,084] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading_mongodb', 'manual__2022-08-01T12:36:28.767825+00:00', '--job-id', '89', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpwdw1cusk', '--error-file', '/tmp/tmpsgpbi3g4']
+[2022-08-01 12:36:59,085] {standard_task_runner.py:80} INFO - Job 89: Subtask data_uploading_mongodb
+[2022-08-01 12:36:59,167] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading_mongodb manual__2022-08-01T12:36:28.767825+00:00 [running]> on host 31353b71d6cb
+[2022-08-01 12:36:59,255] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading_mongodb
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-01T12:36:28.767825+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-01T12:36:28.767825+00:00
+[2022-08-01 12:36:59,256] {python.py:173} INFO - Done. Returned value was: 0
+[2022-08-01 12:36:59,287] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_uploading_mongodb, execution_date=20220801T123628, start_date=20220801T123659, end_date=20220801T123659
+[2022-08-01 12:36:59,336] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-01 12:36:59,374] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

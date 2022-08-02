@@ -1,0 +1,37 @@
+[2022-08-01 11:02:36,001] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-08-01T11:02:32.685495+00:00 [queued]>
+[2022-08-01 11:02:36,024] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.container_creation manual__2022-08-01T11:02:32.685495+00:00 [queued]>
+[2022-08-01 11:02:36,025] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-01 11:02:36,025] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-01 11:02:36,026] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-01 11:02:36,060] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): container_creation> on 2022-08-01 11:02:32.685495+00:00
+[2022-08-01 11:02:36,067] {standard_task_runner.py:52} INFO - Started process 2213 to run task
+[2022-08-01 11:02:36,075] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'container_creation', 'manual__2022-08-01T11:02:32.685495+00:00', '--job-id', '67', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmp7gc0_5a0', '--error-file', '/tmp/tmpli7l5gkz']
+[2022-08-01 11:02:36,076] {standard_task_runner.py:80} INFO - Job 67: Subtask container_creation
+[2022-08-01 11:02:36,226] {task_command.py:371} INFO - Running <TaskInstance: Demo.container_creation manual__2022-08-01T11:02:32.685495+00:00 [running]> on host 31353b71d6cb
+[2022-08-01 11:02:36,416] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=container_creation
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-01T11:02:32.685495+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-01T11:02:32.685495+00:00
+[2022-08-01 11:02:36,418] {confidential_client_secret_sample.py:52} INFO - No suitable token exists in cache. Let's get a new one from AAD.
+[2022-08-01 11:02:36,630] {taskinstance.py:1909} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/demo.py", line 12, in create_container
+    waves_dict_ids,transcriptions_dict_ids=API_Call_Result()
+  File "/opt/airflow/dags/external_files/confidential_client_secret_sample.py", line 56, in API_Call_Result
+    waves_dict_ids=get_files_ids("endpoint_waves")
+  File "/opt/airflow/dags/external_files/confidential_client_secret_sample.py", line 12, in get_files_ids
+    headers={'Authorization': 'Bearer ' + result['access_token']}, ).json()
+NameError: name 'result' is not defined
+[2022-08-01 11:02:36,689] {taskinstance.py:1420} INFO - Marking task as FAILED. dag_id=Demo, task_id=container_creation, execution_date=20220801T110232, start_date=20220801T110236, end_date=20220801T110236
+[2022-08-01 11:02:36,749] {standard_task_runner.py:97} ERROR - Failed to execute job 67 for task container_creation (name 'result' is not defined; 2213)
+[2022-08-01 11:02:36,811] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-08-01 11:02:36,989] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

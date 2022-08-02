@@ -1,0 +1,66 @@
+[2022-08-02 13:51:42,040] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T13:51:34.386490+00:00 [queued]>
+[2022-08-02 13:51:42,054] {taskinstance.py:1179} INFO - Dependencies all met for <TaskInstance: Demo.data_uploading manual__2022-08-02T13:51:34.386490+00:00 [queued]>
+[2022-08-02 13:51:42,055] {taskinstance.py:1376} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 13:51:42,056] {taskinstance.py:1377} INFO - Starting attempt 1 of 1
+[2022-08-02 13:51:42,056] {taskinstance.py:1378} INFO - 
+--------------------------------------------------------------------------------
+[2022-08-02 13:51:42,077] {taskinstance.py:1397} INFO - Executing <Task(PythonOperator): data_uploading> on 2022-08-02 13:51:34.386490+00:00
+[2022-08-02 13:51:42,082] {standard_task_runner.py:52} INFO - Started process 12841 to run task
+[2022-08-02 13:51:42,085] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'Demo', 'data_uploading', 'manual__2022-08-02T13:51:34.386490+00:00', '--job-id', '309', '--raw', '--subdir', 'DAGS_FOLDER/demo.py', '--cfg-path', '/tmp/tmpyxcfe2z9', '--error-file', '/tmp/tmpeecx97qj']
+[2022-08-02 13:51:42,086] {standard_task_runner.py:80} INFO - Job 309: Subtask data_uploading
+[2022-08-02 13:51:42,170] {task_command.py:371} INFO - Running <TaskInstance: Demo.data_uploading manual__2022-08-02T13:51:34.386490+00:00 [running]> on host 31353b71d6cb
+[2022-08-02 13:51:42,286] {taskinstance.py:1591} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=Demo
+AIRFLOW_CTX_TASK_ID=data_uploading
+AIRFLOW_CTX_EXECUTION_DATE=2022-08-02T13:51:34.386490+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-08-02T13:51:34.386490+00:00
+[2022-08-02 13:51:42,297] {base.py:68} INFO - Using connection ID 'azure_demo' for task execution.
+[2022-08-02 13:51:42,303] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/waves?restype=REDACTED'
+Request method: 'DELETE'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': '3d52c828-126a-11ed-9bf5-0242ac120007'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 13:51:42,342] {_universal.py:504} INFO - Response status: 202
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-client-request-id': '3d52c828-126a-11ed-9bf5-0242ac120007'
+    'x-ms-request-id': '6bb1fa55-41df-4eca-8036-e22e8426a38c'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 13:51:42 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 13:51:42,343] {wasb.py:398} INFO - Deleted container: waves
+[2022-08-02 13:51:42,345] {_universal.py:476} INFO - Request URL: 'http://azurite:10000/devstoreaccount1/transcriptions?restype=REDACTED'
+Request method: 'DELETE'
+Request headers:
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.8.1 Python/3.7.13 (Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-debian-11.4)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': '3d5946a8-126a-11ed-9bf5-0242ac120007'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2022-08-02 13:51:42,350] {_universal.py:504} INFO - Response status: 202
+Response headers:
+    'Server': 'Azurite-Blob/3.18.0'
+    'x-ms-client-request-id': '3d5946a8-126a-11ed-9bf5-0242ac120007'
+    'x-ms-request-id': '49536c93-838c-4a28-bb5e-b70d44528c0a'
+    'x-ms-version': 'REDACTED'
+    'date': 'Tue, 02 Aug 2022 13:51:42 GMT'
+    'Connection': 'keep-alive'
+    'Keep-Alive': 'REDACTED'
+    'Content-Length': '0'
+[2022-08-02 13:51:42,351] {wasb.py:398} INFO - Deleted container: transcriptions
+[2022-08-02 13:51:42,352] {python.py:173} INFO - Done. Returned value was: 0
+[2022-08-02 13:51:42,384] {taskinstance.py:1420} INFO - Marking task as SUCCESS. dag_id=Demo, task_id=data_uploading, execution_date=20220802T135134, start_date=20220802T135142, end_date=20220802T135142
+[2022-08-02 13:51:42,418] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-08-02 13:51:42,471] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check
